@@ -23,8 +23,9 @@ export function IntroOverlay() {
 
   const onStart = () => {
     window.sessionStorage.setItem("introShown", "1");
-    setOpen(false);
     router.push("/intro");
+    // Component unmount olmadan önce navigasyonu tetiklemek için sırayı önden alıyoruz.
+    setOpen(false);
   };
 
   return (
