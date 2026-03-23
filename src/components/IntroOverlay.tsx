@@ -9,10 +9,9 @@ export function IntroOverlay() {
   const startedRef = useRef(false);
 
   useEffect(() => {
-    const shown = window.sessionStorage.getItem("introShown");
-    // Lint kuralı nedeniyle setState'i effect gövdesi içinde senkron çağırmıyoruz.
+    // Overlay her girişte görünsün (sessionStorage ile kilitlemeyelim).
     window.setTimeout(() => {
-      setOpen(shown !== "1");
+      setOpen(true);
     }, 0);
   }, []);
 
@@ -30,8 +29,6 @@ export function IntroOverlay() {
   const onStart = () => {
     if (startedRef.current) return;
     startedRef.current = true;
-
-    window.sessionStorage.setItem("introShown", "1");
     setOpen(false);
 
     // Navigasyon tarayıcının default davranışıyla da garanti edilecek.
