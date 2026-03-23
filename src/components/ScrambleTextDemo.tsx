@@ -6,7 +6,7 @@ export function ScrambleTextDemo() {
   const blurbs = useMemo(
     () => [
       "Scramble or unscramble text progressively.",
-      "Use specific chars like 'XO' or use only numbers, UPPERCASE or lowercase.",
+      "Hazır mısınız? Yeni fikirlerin ve ilhamın tam ortasına dalmaya…",
       "Even add a class to the new or old text.",
     ],
     [],
