@@ -20,10 +20,6 @@ export function ScrambleTextIntro() {
 
   const [text, setText] = useState(blurbs[0]!);
 
-  useEffect(() => {
-    gsap.registerPlugin(ScrambleTextPlugin);
-  }, []);
-
   const scrambleTo = (nextIndex: number) => {
     const el = textRef.current;
     if (!el) return;
@@ -48,6 +44,9 @@ export function ScrambleTextIntro() {
   };
 
   useEffect(() => {
+    // Plugin register edilmeden animasyon başlamasın diye aynı effect içinde yapıyoruz.
+    gsap.registerPlugin(ScrambleTextPlugin);
+
     // Intro sayfasına gelince animasyonu başlat.
     const t = window.setTimeout(() => scrambleTo(1), 0);
     return () => window.clearTimeout(t);
