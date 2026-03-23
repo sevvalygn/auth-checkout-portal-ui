@@ -1,5 +1,3 @@
-import { MouseFlairTrail } from "@/components/MouseFlairTrail";
-
 export default function Home() {
   return (
     <>
@@ -117,7 +115,6 @@ export default function Home() {
         </div>
       </section>
     </main>
-    <MouseFlairTrail />
     </>
   );
 }
