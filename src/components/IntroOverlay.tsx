@@ -1,10 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
 
 export function IntroOverlay() {
-  const router = useRouter();
   const [open, setOpen] = useState(() => {
     if (typeof window === "undefined") return true;
     return window.sessionStorage.getItem("introShown") !== "1";
@@ -23,10 +21,10 @@ export function IntroOverlay() {
 
   const onStart = () => {
     window.sessionStorage.setItem("introShown", "1");
-    router.push("/intro");
-    // Navigasyon başladığı anda overlay'i kapatmak bazen route geçişini etkileyebiliyor.
-    // Kısa bir gecikmeyle kapatıyoruz.
-    window.setTimeout(() => setOpen(false), 150);
+    setOpen(false);
+    // Route geçişi bazı durumlarda Next router ile yarışabiliyor.
+    // Bu demo için tarayıcı seviyesinde kesin navigasyon yapıyoruz.
+    window.location.assign("/intro");
   };
 
   return (
