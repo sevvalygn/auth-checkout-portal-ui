@@ -1,6 +1,9 @@
+import { IntroOverlay } from "@/components/IntroOverlay";
+
 export default function Home() {
   return (
     <>
+    <IntroOverlay />
     <main className="relative z-10 bg-background">
       <section className="mx-auto max-w-5xl px-4 py-14">
         <div className="grid gap-10 md:grid-cols-2 md:items-center">
