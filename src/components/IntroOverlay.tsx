@@ -24,8 +24,9 @@ export function IntroOverlay() {
   const onStart = () => {
     window.sessionStorage.setItem("introShown", "1");
     router.push("/intro");
-    // Component unmount olmadan önce navigasyonu tetiklemek için sırayı önden alıyoruz.
-    setOpen(false);
+    // Navigasyon başladığı anda overlay'i kapatmak bazen route geçişini etkileyebiliyor.
+    // Kısa bir gecikmeyle kapatıyoruz.
+    window.setTimeout(() => setOpen(false), 150);
   };
 
   return (
