@@ -3,9 +3,7 @@
 import gsap from "gsap";
 import ScrambleTextPlugin from "gsap/ScrambleTextPlugin";
 import { useEffect, useMemo, useRef, useState } from "react";
-
-const OUTLINE_CLASS =
-  "outline outline-2 outline-dashed outline-gray-400 outline-offset-5 rounded-[10px]";
+import styles from "./ScrambleTextIntro.module.css";
 
 export function ScrambleTextIntro() {
   const textRef = useRef<HTMLHeadingElement | null>(null);
@@ -32,7 +30,6 @@ export function ScrambleTextIntro() {
 
     curIndexRef.current = nextIndex;
     const nextText = blurbs[nextIndex]!;
-    setText(nextText);
 
     gsap.to(el, {
       scrambleText: {
@@ -40,18 +37,19 @@ export function ScrambleTextIntro() {
         chars: "upperAndLowerCase",
         revealDelay: 0.2,
         tweenLength: true,
-        // Tailwind'de `border` sınıfı utility olduğu için çakışmaması adına outline tabanlı sınıf set ediyoruz.
-        newClass: OUTLINE_CLASS,
+        // Kodpen'deki gibi border efekti, ama Tailwind ile çakışmasın diye CSS module class'ı basıyoruz.
+        newClass: nextIndex === 2 ? styles.border : "",
       },
       ease: "power2.inOut",
       overwrite: "auto",
       duration: 4.2,
+      onComplete: () => setText(nextText),
     });
   };
 
   useEffect(() => {
     // Intro sayfasına gelince animasyonu başlat.
-    const t = window.setTimeout(() => scrambleTo(1), 350);
+    const t = window.setTimeout(() => scrambleTo(1), 0);
     return () => window.clearTimeout(t);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -65,19 +63,21 @@ export function ScrambleTextIntro() {
     <main className="flex min-h-[100vh] flex-col items-center justify-center bg-background px-4">
       <h1
         ref={textRef}
-        className="text-center font-mono text-base leading-relaxed text-foreground w-full max-w-[50ch] h-[300px] py-10"
+        className={styles.text + " text-foreground"}
       >
         {text}
       </h1>
 
-      <button
-        id="next"
-        type="button"
-        onClick={onNext}
-        className="rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
-      >
-        Next
-      </button>
+      <div className={styles.buttonWrapper}>
+        <button
+          id="next"
+          type="button"
+          onClick={onNext}
+          className="rounded-lg bg-primary px-5 py-2.5 text-sm font-medium text-primary-foreground transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
+        >
+          Next
+        </button>
+      </div>
     </main>
   );
 }
