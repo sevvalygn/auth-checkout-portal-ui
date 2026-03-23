@@ -2,7 +2,7 @@ import { ContactForm } from "@/components/ContactForm";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "İletişim — Acme",
+  title: "İletişim — auth-checkout-portal-ui",
 };
 
 export default function ContactPage() {

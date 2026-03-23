@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Fiyatlandırma — Acme",
+  title: "Fiyatlandırma — auth-checkout-portal-ui",
 };
 
 export default function PricingPage() {

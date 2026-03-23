@@ -12,7 +12,7 @@ const libreBaskerville = Libre_Baskerville({
 });
 
 export const metadata: Metadata = {
-  title: "Acme",
+  title: "auth-checkout-portal-ui",
   description: "Stajyer projesi: Tailwind ve Next ile landing sayfası.",
 };
 

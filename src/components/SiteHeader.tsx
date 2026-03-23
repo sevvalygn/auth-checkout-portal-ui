@@ -8,7 +8,7 @@ export function SiteHeader() {
           className="font-semibold tracking-tight text-foreground"
           href="/"
         >
-          Acme
+          auth-checkout-portal-ui
         </Link>
         <nav className="hidden items-center gap-6 text-sm text-muted-foreground sm:flex">
           <Link className="hover:text-foreground" href="/#ozellikler">

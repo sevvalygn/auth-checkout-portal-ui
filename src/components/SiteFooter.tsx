@@ -62,7 +62,7 @@ export function SiteFooter() {
           </a>
         </div>
         <p className="text-sm text-muted-foreground">
-          © 2026 Acme. Tüm hakları saklıdır.
+          © 2026 auth-checkout-portal-ui. Tüm hakları saklıdır.
         </p>
       </div>
     </footer>
