@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import { useEffect } from "react";
 import { ScrambleTextIntro } from "@/components/ScrambleTextIntro";
 
-const INTRO_MS = 10_000;
+const INTRO_MS = 5_000;
 
 export default function IntroPage() {
   const router = useRouter();
