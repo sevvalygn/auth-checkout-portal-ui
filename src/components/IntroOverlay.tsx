@@ -27,34 +27,27 @@ export function IntroOverlay() {
     window.sessionStorage.setItem("introShown", "1");
     setOpen(false);
 
-    // Kesin navigasyon
-    window.location.assign("/intro");
+    // Navigasyon tarayıcının default davranışıyla da garanti edilecek.
   };
 
   return (
     <div className="fixed inset-0 z-[60] pointer-events-auto flex items-center justify-center bg-background/50 backdrop-blur-sm">
       <div className="w-full max-w-3xl rounded-3xl border border-border/60 bg-card/40 p-8 text-center shadow-sm">
-        <button
-          type="button"
+        <a
+          href="/intro"
           onPointerDown={(e) => {
-            e.preventDefault();
-            e.stopPropagation();
-            onStart();
-          }}
-          onMouseDown={(e) => {
-            e.preventDefault();
             e.stopPropagation();
             onStart();
           }}
           onClick={(e) => {
-            e.preventDefault();
+            // Navigasyonu engellemiyoruz; sadece overlay'i session'a göre kapatıyoruz.
             e.stopPropagation();
             onStart();
           }}
           className="pointer-events-auto inline-flex w-auto items-center justify-center rounded-xl bg-primary px-6 py-3 text-sm font-medium text-primary-foreground transition hover:opacity-90 focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2 focus:ring-offset-background"
         >
           Başla
-        </button>
+        </a>
       </div>
     </div>
   );
